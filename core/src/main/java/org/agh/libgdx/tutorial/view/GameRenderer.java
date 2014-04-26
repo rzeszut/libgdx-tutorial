@@ -24,12 +24,10 @@ public final class GameRenderer {
     private ShapeRenderer debugRenderer;
 
     private SpriteBatch spriteBatch;
-    private TextureRegion blockTexture;
+    private TextureRegion brickTexture;
     private TextureRegion batTexture;
     private TextureRegion ballTexture;
 
-    private int width;
-    private int height;
     private float ppuX;
     private float ppuY;
 
@@ -47,14 +45,12 @@ public final class GameRenderer {
 
     private void loadTextures() {
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("gen/textures.pack"));
-        blockTexture = atlas.findRegion("block");
+        brickTexture = atlas.findRegion("brick");
         batTexture = atlas.findRegion("bat");
         ballTexture = atlas.findRegion("ball");
     }
 
     public void setSize(int width, int height) {
-        this.width = width;
-        this.height = height;
         this.ppuX = (float) width / SCREEN_WIDTH;
         this.ppuY = (float) height / SCREEN_HEIGHT;
     }
@@ -100,14 +96,21 @@ public final class GameRenderer {
     }
 
     private void renderBricks() {
-
+        for (final Brick brick : world.bricks) {
+            if (!brick.hit) {
+                Rect rect = brick.area;
+                spriteBatch.draw(brickTexture, rect.x * ppuX, rect.y * ppuY, rect.width * ppuX, rect.height * ppuY);
+            }
+        }
     }
 
     private void renderBall() {
-
+        Rect rect = world.ball.area;
+        spriteBatch.draw(ballTexture, rect.x * ppuX, rect.y * ppuY, rect.width * ppuX, rect.height * ppuY);
     }
 
     private void renderBat() {
-
+        Rect rect = world.bat.area;
+        spriteBatch.draw(batTexture, rect.x * ppuX, rect.y * ppuY, rect.width * ppuX, rect.height * ppuY);
     }
 }
