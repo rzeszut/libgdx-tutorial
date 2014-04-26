@@ -1,5 +1,6 @@
 package org.agh.libgdx.tutorial;
 
+import com.badlogic.gdx.graphics.Color;
 import org.agh.libgdx.tutorial.util.Rect;
 
 /**
@@ -16,15 +17,21 @@ public interface Constants {
 
     /* Ball constants */
     float BALL_SIZE = 1.f;
-    float BALL_VELOCITY = 0.25f;
-    float BALL_STARTING_ANGLE = (float) (-Math.PI / 4);
+    float BALL_VELOCITY = 5f;
+    float BALL_STARTING_ANGLE = PI / 4;
 
     /* Bat constants */
     float BAT_WIDTH = 4.f;
     float BAT_HEIGHT = 1.5f;
-    float BAT_VELOCITY = 0.2f;
+    float BAT_VELOCITY = 0.5f;
 
     /* Brick constants */
     float BRICK_WIDTH = 2.f;
     float BRICK_HEIGHT = 1.f;
+
+    /* Debug */
+    boolean DEBUG_MODE = true;
+    Color BAT_COLOR = new Color(0, 0, 1, 1);
+    Color BALL_COLOR = new Color(0, 1, 0, 1);
+    Color BRICK_COLOR = new Color(1, 0, 0, 1);
 }

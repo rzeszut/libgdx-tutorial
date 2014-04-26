@@ -65,7 +65,7 @@ public final class Ball extends GameModel {
             boolean xin = bat.area.getLeft() < area.getCenterX() && area.getCenterX() < bat.area.getRight();
 
             if ((bottom || top) && xin) {
-                angle = -PI * (bat.area.getRight() - area.getCenterX()) / bat.area.width;
+                angle = PI * (bat.area.getRight() - area.getCenterX()) / bat.area.width;
             } else if (left || right) {
                 angle = PI - angle;
             }
